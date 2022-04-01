@@ -24,9 +24,12 @@ Vue.use(Vuetify);
  
 const router = new VueRouter({
     mode: 'history',
-    routes: routes
+    base: process.env.MIX_BASE_URL,
+    routes,
 });
- 
+
+Vue.config.devtools = false;
+
 //finalmente, definimos nuestra app de Vue
 const app = new Vue({
     el: '#app',
@@ -47,5 +50,4 @@ const app = new Vue({
     }),
     render: h => h(App),
 });
-
 router.replace('/login');

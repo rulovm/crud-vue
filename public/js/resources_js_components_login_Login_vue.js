@@ -64,9 +64,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      valid: false,
       correo: '',
       password: '',
       correoRules: [function (v) {
@@ -80,7 +82,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    registrar: function registrar() {}
+    submit: function submit() {
+      alert('Inicio sesión');
+    }
   }
 });
 
@@ -208,6 +212,12 @@ var render = function () {
                             {
                               ref: "form",
                               attrs: { "lazy-validation": "" },
+                              on: {
+                                submit: function ($event) {
+                                  $event.preventDefault()
+                                  return _vm.submit.apply(null, arguments)
+                                },
+                              },
                               model: {
                                 value: _vm.valid,
                                 callback: function ($$v) {
@@ -251,12 +261,11 @@ var render = function () {
                                 "v-btn",
                                 {
                                   staticClass: "mr-4",
-                                  attrs: { color: "success" },
-                                  on: { click: _vm.validate },
+                                  attrs: { color: "success", type: "submit" },
                                 },
                                 [
                                   _vm._v(
-                                    "\r\n                            Guardar\r\n                            "
+                                    "\n                            Guardar\n                            "
                                   ),
                                 ]
                               ),
@@ -272,7 +281,7 @@ var render = function () {
                                 },
                                 [
                                   _vm._v(
-                                    "\r\n                            Registrar\r\n                            "
+                                    "\n                            Registrar\n                            "
                                   ),
                                 ]
                               ),

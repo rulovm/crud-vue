@@ -14,6 +14,7 @@
                             ref="form"
                             v-model="valid"
                             lazy-validation
+                            @submit.prevent="submit"
                         >
                             <v-text-field
                             v-model="correo"
@@ -32,7 +33,7 @@
                             <v-btn
                             color="success"
                             class="mr-4"
-                            @click="validate"
+                            type="submit"
                             >
                             Guardar
                             </v-btn>
@@ -54,6 +55,7 @@
 <script>
 export default {
     data: () => ({
+        valid: false,
         correo: '',
         password: '',
         correoRules: [
@@ -65,9 +67,9 @@ export default {
         ],
     }),
     methods: {
-        registrar(){
-
-        }
+        submit () {
+            alert('Inicio sesión');    
+        },
     }
 };
 </script>
